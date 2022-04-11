@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Lista</title>
+  </head>
+  <body>
+    <div class="form-group">
+      <input type="text" placeholder="Buscar" id="textoBuscador" />
+      <button onclick="buscar()">Buscar</button>
+    </div>
+    <br />
+    <table style="width: 100%">
+      <thead>
+        <th>Id</th>
+        <th>Usuario</th>
+        <th>Bloqueado</th>
+        <th>Apellido</th>
+        <th>Nombre</th>
+        <th>Bloquear</th>
+        <th>Desbloquear</th>
+      </thead>
+      <tbody id="data"></tbody>
+    </table>
+
+    <script>
+      function cargarPagina() {
+        let url = "http://168.194.207.98:8081/tp/lista.php?action=BUSCAR";
+
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => mostrarData(data))
+          .catch((error) => console.log(error));
+      }
+
+      const mostrarData = (data) => {
+        let body = "";
+        for (var i = 0; i < data.length; i++) {
+          let clase = data[i].bloqueado == "Y" ? 'class="mal"' : "";
+
+          body += `<tr ${clase}>
+            <td>${data[i].id}</td>
+            <td>${data[i].usuario}</td>
+            <td>${data[i].bloqueado}</td>
+            <td>${data[i].apellido}</td>
+            <td>${data[i].nombre}</td>
+            <td><button type="button" onclick="bloquear('${data[i].id}')"> <img src="imageBAD.png" height ="50" width="50"/></td>
+            <td><button type="button" onclick="desbloquear('${data[i].id}')"> <img src="imageOK.png" height ="50" width="50"/></button></td>
+            </tr>`;
+        }
+
+        document.getElementById("data").innerHTML = body;
+      };
+
+      function buscar() {
+        let texto = document.getElementById("textoBuscador").value;
+        fetch(url + "&usuario=" + texto)
+          .then((response) => response.json())
+          .then((data) => {
+            mostrarData(data);
+            if (data == "") {
+              alert("No se obtuvieron resultados");
+            }
+          })
+          .catch((error) => console.log(error));
+      }
+
+      function bloquear(user) {
+        let url2 =
+          "http://168.194.207.98:8081/tp/lista.php?action=BLOQUEAR&idUser=" + user +
+          "&estado=Y";
+        fetch(url2)
+          .then((data) => cargarPagina())
+          .catch((error) => console.log(error));
+      }
+
+      function desbloquear(user) {
+        let url2 =
+          "http://168.194.207.98:8081/tp/lista.php?action=BLOQUEAR&idUser=" +
+          user +
+          "&estado=N";
+        fetch(url2)
+          .then((data) => cargarPagina())
+          .catch((error) => console.log(error));
+      }
+
+      cargarPagina();
+    </script>
+  </body>
+</html>

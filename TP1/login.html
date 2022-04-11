@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <div class="form-group">
+      <h2>Formulario de registro</h2>
+      <label for="usuario"> Usuario: </label>
+      <input
+        type="text"
+        name="user"
+        id="user"
+        placeholder="Nombre de usuario"
+      />
+      <br />
+      <br />
+
+      <label for="contraseña"> Contraseña: </label>
+      <input type="password" name="pass" id="pass" placeholder="Contraseña" />
+      <br />
+      <br />
+
+      <button type="submit" value="Ingresar" onclick="validateForm()">
+        Ingresar
+      </button>
+    </div>
+  </body>
+
+  <script>
+    function validateForm() {
+      let pass = document.getElementById("pass").value;
+      let user = document.getElementById("user").value;
+
+      GetData(
+        "http://168.194.207.98:8081/tp/login.php?user=" + user + "&pass=" + pass
+      );
+    }
+
+    function GetData(url) {
+      const response = fetch(url)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          if (data.respuesta == "ERROR") {
+            alert(data.respuesta + "  " + data.mje);
+          } else location.href = "lista.html";
+        });
+
+        
+    }
+  </script>
+</html>
