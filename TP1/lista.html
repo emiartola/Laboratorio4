@@ -27,9 +27,9 @@
     </table>
 
     <script>
+      let url = "http://168.194.207.98:8081/tp/lista.php?action=BUSCAR";
+      
       function cargarPagina() {
-        let url = "http://168.194.207.98:8081/tp/lista.php?action=BUSCAR";
-
         fetch(url)
           .then((response) => response.json())
           .then((data) => mostrarData(data))
@@ -70,7 +70,8 @@
 
       function bloquear(user) {
         let url2 =
-          "http://168.194.207.98:8081/tp/lista.php?action=BLOQUEAR&idUser=" + user +
+          "http://168.194.207.98:8081/tp/lista.php?action=BLOQUEAR&idUser=" +
+          user +
           "&estado=Y";
         fetch(url2)
           .then((data) => cargarPagina())
