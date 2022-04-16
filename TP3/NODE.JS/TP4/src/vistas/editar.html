@@ -1,0 +1,91 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function(e) {
+    var miForm = document.getElementById('miForm');
+    miForm.onsubmit = function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        var jsonData = {};
+        for (var [k, v] of formData) {
+        jsonData[k] = v;
+        }
+        console.log(jsonData);
+        try{
+        id = document.getElementsByName("Id")[0].value
+        apellido = document.getElementsByName("Apellido")[0].value
+        nombre = document.getElementsByName("Nombre")[0].value
+        dni = document.getElementsByName("Dni")[0].value
+        sector = document.getElementsByName("Sector")[0].value
+        fechaIngreso = document.getElementsByName("FechaIngreso")[0].value
+        activo = document.getElementsByName("Activo")[0].value
+        let c  ={ id,apellido,nombre,dni ,sector ,fechaIngreso ,activo }
+        const b = JSON.stringify(c)
+        console.log(b)
+        const response =  fetch(`/actualizar/${id}`, {
+            method: 'put',
+            body: b,
+            headers: {'Content-Type': 'application/json'}
+        });
+        const data =  response;
+        //console.log(data)
+        data.then(val => console.log(val));
+        }catch (error){
+            console.log(error);
+        }
+    }
+    });
+</script>
+
+<link rel="stylesheet" href="style.css"> 
+
+<head>
+    <h1>========EDITAR========</h1>
+</head>
+<body>
+
+    
+   <ng-container>
+
+    <a href="http://localhost:3000/">[Index]</a>
+    
+    <form action="" method="post" class="form_contact" id="miForm">
+  <h2></h2>
+
+  <div class="user_info">
+
+<div >
+    <label for="id" > ID </label>
+    <td><input type="text" name="id" value= {{OneEmpleado.id}} /></td>
+</div>
+<div >
+    <label for="nombre" >Nombre </label>
+    <td><input type="text" name="nombre" value= {{OneEmpleado.nombre}} /></td>
+</div>
+<div>
+    <label for="sector">apellido</label>
+    <td><input type="text" name="apellido" value={{OneEmpleado.apellido}} /></td>
+</div>
+    <label for="dni">dni</label>
+    <td><input type="text" name="dni" value={{OneEmpleado.dni}} /></td>
+</div>
+<div>
+    <label for="sector">sector</label>
+    <td><input type="text" name="sector" value={{OneEmpleado.sector}} /></td>
+</div>
+<div>
+    <label for="fechaIngreso">fecha Ingreso</label>
+    <td><input type="text" name="fechaIngreso" value={{OneEmpleado.fechaIngreso}} /></td>
+</div>
+<div>
+    <label for="activo">activo</label>
+    <td><input type="text" name="activo" value={{OneEmpleado.activo}} /></td>
+  </div>
+ 
+    <h1></h1>
+    <button onclick="location.href='http://localhost:3000/'" type="submit" value="Enviar" id="btnSend">Editar</button>
+
+  </div>
+</form>
+      
+ 
+
+</body>

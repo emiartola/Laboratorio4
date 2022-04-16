@@ -1,0 +1,28 @@
+<script>
+    
+    try{       
+        console.log({id});
+        const response =  fetch('/eliminar/{{id}}', {
+        method: 'DELETE',
+        })
+        
+        const data =  response;
+        //console.log(data)
+        data.then(val => console.log(val));
+       
+        
+        console.log('holaaa'+ data)
+        
+        
+        }catch (error){
+            console.log('error')
+            console.log(error);
+        }
+</script>
+
+<link rel="stylesheet" href="style.css"> 
+
+  <body>
+      <p>Eliminado!</p>
+      <a href="http://localhost:3000/">Volver</a>
+  </body>

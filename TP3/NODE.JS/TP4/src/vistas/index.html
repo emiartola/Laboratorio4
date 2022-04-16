@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>INDEX</title>
+</head>
+
+<body action="" method="post" class="form_contact" id="miForm">
+
+<h3>Empleados</h3>
+
+
+
+        <table style="width: 100%">
+            <thead>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dni</th>
+                <th>Sector</th>
+                <th>Fecha Ingreso</th>
+                <th>Activo</th>
+            </thead>
+            <tbody>
+                <td name="id"> <td>
+                <td name="nombre"></td>
+                <td name="apellido"></td>
+                <td name="dni"></td>
+                <td name="sector"></td>
+                <td name="fechaIngreso"></td>
+                <td name="activo"></td>
+
+                <td><a href="http://localhost:3000/empleados/{{this.id}}">--[Ver]--</a></td>
+                <td><a href="http://localhost:3000/editar/{{this.id}}">--[Editar]--</a></td>
+                <td><a href="http://localhost:3000/eliminar/{{this.id}}" role="button">--[Eliminar]--</a></td>
+            </tbody>
+        </table>
+
+
+</body>
+
+</html>
