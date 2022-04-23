@@ -1,4 +1,4 @@
-import { Button, Card } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 type InstrumentoParams = {
     id: number;
@@ -15,38 +15,7 @@ type InstrumentoParams = {
 export const ItemInstrumento = (args: InstrumentoParams) => {
 
     return (
-        // <>
-        //     <Card style={{ width: '18rem' }} className="margenesTarjeta">
-        //         <Card.Img variant="top" className="maxAltoImg" src={"http://localhost:3000/images/" + args.imagen.toLowerCase()} />
-        //         <Card.Body>
-        //             <Card.Title>{args.instrumento}</Card.Title>
-        //             <Card.Text >
-        //                 ${args.precio}
-        //             </Card.Text>
-
-        //                 {/* if {args.costoEnvio} == "G" {
-        //                      <p text-color='green'>“Envío gratis a todo el país” </p>
-        //                 } else {
-        //                     <p text-color='orange'>"Costo de envío interior de Argentina:{args.costoEnvio}</p>
-        //                 } */}
-        //                 {args.costoEnvio} === "G" ? (
-        //                     <h5 style={{ color: "green" }}>
-        //                         {" "}
-        //                         <img src="assets/img/camion.png" alt="envioIcon" />
-        //                         Envio Gratis A Todo El Pais
-        //                     </h5>
-        //                 ) : (
-        //                     <h5 style={{ color: "orange" }}>
-        //                         Costo Envio Interior De Argentina ${args.costoEnvio}
-        //                     </h5>
-
-        //             <Card.Text>
-        //                 {args.cantidadVendida} vendidos.
-        //             </Card.Text>
-        //             <Button href={`detalle/${args.id}`} variant="primary"> Detalle </Button>
-        //         </Card.Body>
-        //     </Card>
-        // </>
+   
         <div className="col-mb-3 ml-3">
             <div className="card mb-3" style={{ maxWidth: "1000px" }}>
                 <div className="row no-gutters">

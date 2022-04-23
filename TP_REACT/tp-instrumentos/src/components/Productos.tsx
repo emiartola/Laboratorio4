@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Alert, Button, Card, Container, Row } from 'react-bootstrap';
-import { DetalleInstrumento } from './DetalleInstrumento';
-import { getInstrumentosJSON, getInstrumentoXId } from './FuncionesApi';
+import { Container, Row } from 'react-bootstrap';
+import { getInstrumentosJSON } from './FuncionesApi';
 import { Navigation } from './Navigation';
 import Instrumento from './Instrumento';
 import { ItemInstrumento } from './ItemInstrumento';
