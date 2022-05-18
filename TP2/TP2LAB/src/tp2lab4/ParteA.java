@@ -22,7 +22,7 @@ public class ParteA {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, Exception {
 
-        String url = "https://restcountries.eu/rest/v2/callingcode/{callingcode}";
+        String url = "https://restcountries.com/v2/callingcode/{callingcode}";
         String respuesta;
 
         for (int codigo = 1; codigo <= 300; codigo++) {
