@@ -28,7 +28,7 @@ public class ParteB {
      */
     public static void main(String[] args) {
 
-        String url = "https://restcountries.eu/rest/v2/callingcode/";
+        String url = "https://restcountries.com/v2/callingcode/";
         MongoClient mongoClient = crearConexion();
         MongoDatabase db = mongoClient.getDatabase("paises_db");
         MongoCollection<Document> paises = db.getCollection("paises");
